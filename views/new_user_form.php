@@ -1,14 +1,11 @@
 <?php $page_title = "Ajouter un utilisateur";
-	$head_comp = "<link href='css/bulma.css' type='text/css' rel='stylesheet' />";
-
   ob_start();
-
 ?>
 
 <form id="new-user-form" enctype="multipart/form-data" action="modele/add_user.php" method="post">
-<!--Le champs caché   
+<!--Le champs caché
    <input type="hidden" value="stagiaire" id="type_utilisateur" name="type_utilisateur"> -->
-<!-- A propos de vous -->    
+<!-- A propos de vous -->
     <fieldset>
       <legend>A propos de vous</legend>
       <div class="control is-horizontal">
@@ -66,8 +63,8 @@
         <p class="control">
           <input type="file" accept="image/*" name="photo_profil" id="photo_profil">
         </p>
-      </div>         
-      
+      </div>
+
     </fieldset>
 
     <!--Votre CV-->
@@ -78,16 +75,16 @@
         </p>
     </fieldset>
 
-<!-- Vos coordonnées -->    
+<!-- Vos coordonnées -->
     <fieldset>
       <legend>Vos coordonnées</legend>
-      <div class="control is-horizontal">                
+      <div class="control is-horizontal">
         <div class="control-label">
           <label class="label" for="email">e-mail :</label>
         </div>
         <p class="control">
           <input class="input" type="email" name="email" id="email" required aria-required="true">
-        </p>                
+        </p>
       </div>
       <div class="control is-horizontal">
         <div class="control-label">
@@ -134,7 +131,7 @@
             <select name="code_commune_insee_ville" id="ville">
             <?PhP /*
               include "includes/connexion.php";
-                
+
                 $row = $bdd->query('SELECT * FROM ville');*/
                 foreach($form_fields["ville"] as $show) {
                   echo "<option value=\"" . $show["code_commune_insee"] . "\">" . $show["code_postal"] . " " . $show["nom_ville"] . "</option>";
@@ -168,15 +165,15 @@
             ?>
             </select>
           </span>
-        </div>-->               
-      </div>             
-      
+        </div>-->
+      </div>
+
     </fieldset>
 
-<!-- Vos identifiants -->    
+<!-- Vos identifiants -->
     <fieldset>
       <legend>Vos identifiants</legend>
-        <!--<div class="control is-horizontal">            
+        <!--<div class="control is-horizontal">
           <div class="control-label">
             <label class="label" for="identifiant_utilisateur">Identifiant (rappel, non modifiable) :</label>
           </div>
@@ -184,20 +181,20 @@
             <input class="input is-disabled" type="number" name="identifiant_utilisateur" id="identifiant_utilisateur" value="null" readonly />
           </p>
         </div>-->
-        <div class="control is-horizontal">               
+        <div class="control is-horizontal">
           <div class="control-label">
             <label class="label" for="mot_de_passe">Mot de passe :</label>
           </div>
           <p class="control">
-            <input class="input" type="password" name="mot_de_passe" id="mot_de_passe" required aria-required="true"  autocomplete="off"/> 
+            <input class="input" type="password" name="mot_de_passe" id="mot_de_passe" required aria-required="true"  autocomplete="off"/>
           </p><!--autocomplete off pour stopper l'autocompletion-->
-        </div>               
+        </div>
     </fieldset>
 
-<!-- Vos préférences -->    
+<!-- Vos préférences -->
     <fieldset>
       <legend>Vos préférences</legend>
-      <div class="control is-horizontal">           
+      <div class="control is-horizontal">
         <div class="control-label">
           <label class="label" for="langage">Quel langage préférez-vous? </label>
         </div>
@@ -222,7 +219,7 @@
       </div>
     </fieldset>
 
-<!-- Votre niveau -->    
+<!-- Votre niveau -->
     <fieldset>
       <legend>Votre niveau</legend>
         <div class="control is-horizontal">
@@ -236,35 +233,35 @@
         <p class="control">
           <label class="radio" for="<?php echo $show["id_niveau"]; ?>">
             <input class="radio" type="radio" name="id_niveau_niveau" value="<?php echo $show["id_niveau"]; ?>" id="<?php echo $show["id_niveau"]; ?>"/>
-            
+
             <?php echo $show["description_niveau"] ?>
 
           </label>
         </p>
 
-        <?php                
+        <?php
             }
 
             //Fermeture de la connection
-        /* include "includes/fin_connexion.php"; */           
+        /* include "includes/fin_connexion.php"; */
         ?>
-        </div>       
-    </fieldset> 
-<!-- Lettre d'information -->    
+        </div>
+    </fieldset>
+<!-- Lettre d'information -->
     <fieldset>
         <legend>Lettre d'information</legend>
-               
+
           <label class="checkbox" for="newsletter">
-            <input class="checkbox" type="checkbox" name="abonnement_newsletter" id="newsletter" value="1"> 
+            <input class="checkbox" type="checkbox" name="abonnement_newsletter" id="newsletter" value="1">
             <!--Ne pas oublier de mettre une value sinon retourne rien-->
              Je souhaite m'inscrire à la lettre d'infromation
           </label>
-        
+
     </fieldset>
-<!-- Un peu plus sur vous... -->    
+<!-- Un peu plus sur vous... -->
     <fieldset>
       <legend>Un peu plus sur vous...</legend>
-        <div class="control is-horizontal">             
+        <div class="control is-horizontal">
           <div class="control-label">
             <label class="label" for="bio">Biographie</label>
           </div>
@@ -275,13 +272,13 @@
         <div class="control is-horizontal">
           <div class="control-label">
             <label class="label" for="philosophie">Philosophie</label>
-          </div>  
+          </div>
           <div class="control">
             <textarea class="textarea" name="philosophie" id="philosophie" cols="40" rows="4" placeholder="Meuh" ></textarea>
           </div>
         </div>
     </fieldset>
-<!-- Par rapport à la formation -->    
+<!-- Par rapport à la formation -->
     <fieldset>
         <legend>Par rapport à la formation</legend>
         <div class="control is-horizontal">
@@ -300,11 +297,11 @@
             <input class="input" type="date" name="date_dispo" id="date_dispo">
           </p>
         </div>
-    </fieldset> 
-<!-- Divers -->    
+    </fieldset>
+<!-- Divers -->
     <fieldset>
       <legend>Divers</legend>
-        <div class="control is-horizontal">        
+        <div class="control is-horizontal">
           <div class="control-label">
             <label class="label" for="pref_heure_repas">Votre heure préférée pour le repas : </label>
           </div>
@@ -313,22 +310,22 @@
           </p><!-- le step est en secondes doncs 15mm = 900s -->
         </div>
     </fieldset>
-<!-- Validation -->    
+<!-- Validation -->
     <fieldset>
       <legend>Validation</legend>
-                   
+
           <label class="checkbox" for="pref_accept_conditions">
-            <input class="checkbox" type="checkbox" name="pref_accept_conditions" id="pref_accept_conditions" value="true">               
+            <input class="checkbox" type="checkbox" name="pref_accept_conditions" id="pref_accept_conditions" value="true">
             J'ai lu et j'accepte les conditions d'admission.
           </label>
-          
+
         <p class="control">
           <input class="button is-primary" type="submit" value="Envoyer">
         </p>
-    </fieldset>                                 
+    </fieldset>
   </form>
 
-<?php 
+<?php
   $main_content = ob_get_contents();
   ob_end_clean();
 
