@@ -1,4 +1,9 @@
-<?php $page_title = "Ajouter un utilisateur";
+<?php
+	require "modele.php";
+	//On récupère les viles saisies dans le formulaire
+	$form_fields = getFormFields();
+
+	$page_title = "Ajouter un utilisateur";
   ob_start();
 ?>
 
@@ -328,5 +333,31 @@
 <?php
   $main_content = ob_get_contents();
   ob_end_clean();
+
+	//Script d'envoi de formulaire en ajax
+	ob_start();
+?>
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			//Evenement sur le formulaire
+
+			$("#new-user-form").on('submit', function() {
+
+				//GO AJAX!
+				$.post("modele/add_user.php", $('#new-user-form').serialize(), function(data) {
+					console.log(data);
+					$('#new-user-form').before("Utilisateur ajouté à la base de données");
+					//Toggle le formulaire
+					$('#new-user-form').slideToggle();
+				});
+
+				return false; //Pas de changement de page
+			});
+		});
+	</script>
+<?php
+	$script = ob_get_contents();
+	ob_end_clean();
 
   require "template.php";

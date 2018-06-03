@@ -1,43 +1,44 @@
-<?php 
+<?php
 	$page_title = "Liste des utilisateurs";
+	$has_drawer_menu = true;
 	ob_start();
 ?>
-<div class="mdl-cell mdl-cell--12-col">
-	<table class="mdl-data-table">
-		<thead>
-			<tr>
-				<th class="mdl-data-table__cell--non-numeric">
-					Utilisateur
-				</th>
-				<th class="mdl-data-table__cell--non-numeric">
-					Ville
-				</th>
-				<th class="mdl-data-table__cell--non-numeric">
-					Pays
-				</th>
-				<th class="mdl-data-table__cell--non-numeric">
-					Langage préféré
-				</th>
-				<th class="mdl-data-table__cell--non-numeric">
-					Niveau
-				</th>
-				<th class="mdl-data-table__cell--non-numeric">
-					Voir détails
-				</th>
-				<th class="mdl-data-table__cell--non-numeric">
-					Modifier
-				</th>
-				<th class="mdl-data-table__cell--non-numeric">
-					Supprimer
-				</th>
-			</tr>
-		</thead>
-		<tbody>
+	<div class="mdl-cell mdl-cell--12-col">
+		<table class="mdl-data-table">
+			<thead>
+				<tr>
+					<th class="mdl-data-table__cell--non-numeric">
+						Utilisateur
+					</th>
+					<th class="mdl-data-table__cell--non-numeric">
+						Ville
+					</th>
+					<th class="mdl-data-table__cell--non-numeric">
+						Pays
+					</th>
+					<th class="mdl-data-table__cell--non-numeric">
+						Langage préféré
+					</th>
+					<th class="mdl-data-table__cell--non-numeric">
+						Niveau
+					</th>
+					<th class="mdl-data-table__cell--non-numeric">
+						Voir détails
+					</th>
+					<th class="mdl-data-table__cell--non-numeric">
+						Modifier
+					</th>
+					<th class="mdl-data-table__cell--non-numeric">
+						Supprimer
+					</th>
+				</tr>
+			</thead>
+			<tbody>
 
 <?php
 
 	//La boucle affiche les utilisateurs un par un
-	foreach($users as $user) { 
+	foreach($users as $user) {
 
 		echo "<tr><td class='mdl-data-table__cell--non-numeric'>" . $user["Noms"] ."</td>" .
 		"<td class='mdl-data-table__cell--non-numeric'>" . $user["NomVille"] . "</td>" .
@@ -55,7 +56,7 @@
 			echo "<tr><td colspan='8'>";
 
 			if (array_key_exists("confirm", $_GET) AND $_GET["confirm"] == "true") {
-				
+
 				//On affiche un message pour en informer l'utilisateur
 				echo $user["Noms"] . " a bien été supprimé de la base de données!".
 				//Puis on retourne à la liste des utilisateurs
@@ -71,12 +72,12 @@
 			echo "</td></tr>";
 		}
 	}
-		
+
 ?>
 
-		</tbody>
-	</table>
-</div>
+			</tbody>
+		</table>
+	</div>
 
 <?php $main_content = ob_get_contents();
 	ob_end_clean();

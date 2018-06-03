@@ -59,7 +59,7 @@
 
 	<body>
 
-		<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+		<div class="demo-layout mdl-layout mdl-js-layout <?php if(isset($has_drawer_menu) && $has_drawer_menu == true) { echo 'mdl-layout--fixed-drawer'; } ?> mdl-layout--fixed-header">
 <!--=========================================================================================
  _
 | |                  | |
@@ -101,15 +101,19 @@
  \__,_|_|  \__,_| \_/\_/ \___|_|    |_| |_| |_|\___|_| |_|\__,_|
 
 ==========================================================================================-->
-			<aside class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
-			  <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-			    <a class="mdl-navigation__link" href="?action=list"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">account_box</i>Afficher les utilisateurs</a>
-			    <a class="mdl-navigation__link" href="?action=create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">note_add</i>Ajouter un utilisateur</a>
-			    <a class="mdl-navigation__link" href="?action=stats"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">assessment</i>Statistisques</a>
-			    <!--<div class="mdl-layout-spacer"></div>
-			    <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>-->
-			  </nav>
-			</aside>
+			<?php if(isset($has_drawer_menu) && $has_drawer_menu == true) : ?>
+				<aside class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+				  <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+				    <a class="mdl-navigation__link" href="?action=list"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">account_box</i>Afficher les utilisateurs</a>
+						<!--
+				    <a class="mdl-navigation__link" href="?action=create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">note_add</i>Ajouter un utilisateur</a>
+					-->
+				    <a class="mdl-navigation__link" href="?action=stats"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">assessment</i>Statistisques</a>
+				    <div class="mdl-layout-spacer"></div>
+				    <a class="mdl-navigation__link" href="?action=logout"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">highlight_off</i>Log out</a>
+				  </nav>
+				</aside>
+			<?php endif; ?>
 <!--=========================================================================================
 ___  ___  ___  _____ _   _
 |  \/  | / _ \|_   _| \ | |
@@ -121,7 +125,7 @@ ___  ___  ___  _____ _   _
 ==========================================================================================-->
 			<main class="mdl-layout__content mdl-color--grey-100">
 				<div class="mdl-grid">
-			<?php echo $main_content; ?>
+					<?php echo $main_content; ?>
 				</div>
 			</main>
 		</div>

@@ -20,47 +20,6 @@
     //Action de l'utilisateur
     if(array_key_exists("action", $_GET)) {
       switch ($_GET["action"]) {
-        //Ajout d'un nouvel utilisateur
-        case "create":
-          //if(array_key_exists("confirm", $_GET) AND $_GET["confirm"] == "true") {
-            //Insertion dans la base de données
-            /*$test = addUser(); //OLD
-
-            $users = getUsersList();
-            require "views/users_list.php";
-          } else {*/
-            //Création du script à ajouter au formulaire
-            ob_start();
-          ?>
-            <script type="text/javascript">
-              $(document).ready(function() {
-
-                //Evenement sur le formulaire
-
-                $("#new-user-form").on('submit', function() {
-
-                  //GO AJAX!
-                  $.post("modele/add_user.php", $('#new-user-form').serialize(), function(data) {
-										console.log(data);
-                    $('#new-user-form').before("Utilisateur ajouté à la base de données");
-                    //Toggle le formulaire
-                    $('#new-user-form').slideToggle();
-                  });
-
-                  return false; //Pas de changement de page
-                });
-              });
-            </script>
-
-          <?php
-            $script = ob_get_contents();
-            ob_end_clean();
-            //Affichage du formulaire
-            $form_fields = getFormFields();
-
-            require "views/new_user_form.php";
-          //}
-            break;
         //Statistiques sur les utilisateurs
         case "stats":
           $users_stats = getUsersStats();

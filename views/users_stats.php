@@ -1,6 +1,6 @@
-<?php 
+<?php
 	$page_title = "Statistiques sur les utilisateurs";
-
+	$has_drawer_menu = true;
 	ob_start();
 ?>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -30,7 +30,7 @@
       var myUsersGenres = [["Genre", "Nombre d\'utilisateurs"]];
 
       //Insertion des données dans le tableau
-      <?php 
+      <?php
         foreach($users_stats["genres"] as $row) {
           echo 'myUsersGenres.push([' . json_encode($row["genre"]) . ', ' . $row["nb"] . ']);';
         };
@@ -104,8 +104,7 @@
   <div class="mdl-cell mdl-cell--6-col">
     <figure id="ages"></figure>
   </div>
-
-<?php 
+<?php
 	$main_content = ob_get_contents();
 	ob_end_clean();
 

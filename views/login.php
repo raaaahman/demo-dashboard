@@ -3,7 +3,8 @@
 
 	ob_start();
 ?>
-	<div class="mdl-card">
+	<div class="mdl-layout-spacer"></div>
+	<div class="mdl-cell mdl-cell--4-col demo-card-wide mdl-card mdl-shadow--2dp">
 		<div class="mdl-card__title">
 			<h4 class="mdl-card__title-text">Vérification des identifiants</h3>
 		</div>
@@ -11,32 +12,24 @@
 <?php if (isset($log_message)) {
 	echo "<div class='mdl-card__supporting-text'><p>" . $log_message . "</p></div>";
 } ?>
-		<!--div class="mdl-card__actions"-->
 			<form method="post" action="index.php">
-				<div class="control">
-					<div class="control-label">
-						<label class="label" for="email">E-mail : </label>
+				<div class="mdl-card__supporting-text">
+					<div class="mdl-textfield mdl-js-textfield">
+						<label class="mdl-textfield__label" for="email">E-mail : </label>
+						<input class="mdl-textfield__input" type="email" name="email" id="email" />
 					</div>
-					<div class="control">
-						<input class="input" type="email" name="email" id="email" />
-					</div>
-				</div>
-				<div class="control">
-					<div class="control-label">
-						<label class="label" for="password">Mot de passe : </label>
-					</div>
-					<div class="control">
-						<input class="input" type="password" name="password" id="password" />
+					<div class="mdl-textfield mdl-js-textfield">
+						<label class="mdl-textfield__label" for="password">Mot de passe : </label>
+						<input class="mdl-textfield__input" type="password" name="password" id="password" />
 					</div>
 				</div>
-				<div class="control">
-					<div class="control">
-						<input class="button is-primary" type="submit" vlaue="Envoyer"/>
-					</div>
+				<div class="mdl-card__actions mdl-card--border">
+						<input class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" value="Connexion"/>
+						<span>Vous n'êtes pas membre?</span>
 				</div>
 			</form>
-		<!--/div-->
 	</div>
+	<div class="mdl-layout-spacer"></div>
 
 <?php
 	$main_content = ob_get_contents();
