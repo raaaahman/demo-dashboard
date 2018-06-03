@@ -5,6 +5,7 @@
   //Appel des fonctions d'accès aux données
   require "modele/config.php";
   require "modele/modele.php";
+	require "modele/helpers.php";
 
   //En cas de déconnexion,  on supprime la session et on affiche le formulaire de connexion
   if (array_key_exists("action", $_GET) AND $_GET["action"] == "logout") {
@@ -27,6 +28,11 @@
 
           require "views/users_stats.php";
           break;
+
+				case "edit":
+					$user_id= htmlspecialchars($_GET["id"]);
+					require "views/new_user_form.php";
+					break;
         //Suppression d'un utilisateur
         case "suppr":
           //Vérifie la confirmation

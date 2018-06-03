@@ -70,8 +70,4 @@ if (array_key_exists("abonnement_newsletter", $_POST)) {
     $add->bindParam("niveau", $_POST["id_niveau_niveau"], PDO::PARAM_INT);
 
     $add->execute();
-		$add->debugDumpParms();
-
-    echo $add->rowCount() . "lignes affectées";
-
     $bdd = null;
