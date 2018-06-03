@@ -13,7 +13,8 @@
 
     $log_message = "Vous avez été déconnecté avec succès.";
     require "views/login.php";
-
+	} elseif (array_key_exists("action", $_GET) AND $_GET["action"] == "create") {
+		require "views/new_user_form.php";
   //Vérification des autorisations
   } elseif (array_key_exists("authorization", $_SESSION) AND $_SESSION["authorization"] == true) {
 

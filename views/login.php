@@ -8,12 +8,11 @@
 		<div class="mdl-card__title">
 			<h4 class="mdl-card__title-text">Vérification des identifiants</h3>
 		</div>
-
-<?php if (isset($log_message)) {
-	echo "<div class='mdl-card__supporting-text'><p>" . $log_message . "</p></div>";
-} ?>
 			<form method="post" action="index.php">
 				<div class="mdl-card__supporting-text">
+					<?php if (isset($log_message)) {
+						echo "<p>" . $log_message . "</p>";
+					} ?>
 					<div class="mdl-textfield mdl-js-textfield">
 						<label class="mdl-textfield__label" for="email">E-mail : </label>
 						<input class="mdl-textfield__input" type="email" name="email" id="email" />
@@ -22,10 +21,11 @@
 						<label class="mdl-textfield__label" for="password">Mot de passe : </label>
 						<input class="mdl-textfield__input" type="password" name="password" id="password" />
 					</div>
+					<input class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" value="Connexion"/>
 				</div>
 				<div class="mdl-card__actions mdl-card--border">
-						<input class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" value="Connexion"/>
 						<span>Vous n'êtes pas membre?</span>
+						<a href="?action=create">Inscrivez-vous</a>
 				</div>
 			</form>
 	</div>
