@@ -281,7 +281,7 @@
 					console.log(data);
 					$('#new-user-form').before(
 						'<p>Votre inscription a été prise en compte.</p>' +
-						'<a href="/">Se connecter</a>'
+						'<a href="?action=login">Se connecter</a>'
 					);
 					//Toggle le formulaire
 					$('#new-user-form').slideToggle();
