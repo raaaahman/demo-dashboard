@@ -3,7 +3,7 @@
   session_start();
 
   //Appel des fonctions d'accès aux données
-  require "modele/config.php";
+  $config = require "modele/config.php";
   require "modele/modele.php";
 	require "modele/helpers.php";
 

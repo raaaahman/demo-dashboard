@@ -1,9 +1,7 @@
 <?php
 	//Connexion  à la base de données
-	function setConnection () {
-		global $db_user;
-		global $db_pass;
-		$bdd = new PDO("mysql:host=localhost;dbname=demo-dashboard;charset=utf8", $db_user, $db_pass);
+	function setConnection ($config) {
+		$bdd = new PDO("mysql:host=localhos" . $config['host'] .";dbname=" . $config['database'] . ";charset=utf8", $config['user'], $config['password']);
 
 		return $bdd;
 	}
