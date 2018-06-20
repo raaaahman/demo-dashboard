@@ -16,7 +16,7 @@
 	<div class="mdl-layout-spacer"></div>
 <?php endif; ?>
 <div class="mdl-cell <?php if($has_drawer_menu) { echo "mdl-cell--12-col"; } else { echo "mdl-cell--8-col"; } ?>">
-	<form id="new-user-form" enctype="multipart/form-data" action="modele/add_user.php" method="post">
+	<form id="new-user-form" enctype="multipart/form-data" action="database/add_user.php" method="post">
 	      <div class="control is-horizontal">
 	        <div class="control-label">
 	            <label class="label" for="civilite">Civilité :</label>
@@ -276,11 +276,11 @@
 	ob_start();
 ?>
 	<script type="text/javascript">
-	var action = "modele/add_user.php";
+	var action = "database/add_user.php";
 	var messageSuccess = '<p>Votre inscription a été prise en compte.</p>' +
 	'<a href="?action=login">Se connecter</a>';
 	<?php if (isset($user_id)) {
-		echo "action = 'modele/update_user.php';";
+		echo "action = 'database/update_user.php';";
 		echo "messageSuccess = '<p>L\'utilisateur a été mis à jour.</p>';";
 		echo "messageSuccess += '<a href=\"?action=list\">Retour à la liste des utilisateurs</a>';";
 	} ?>

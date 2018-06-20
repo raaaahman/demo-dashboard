@@ -1,5 +1,5 @@
 <?php
-require "config.php";
+$config = require "config.php";
 require "modele.php";
 
 if (array_key_exists("abonnement_newsletter", $_POST)) {
@@ -18,7 +18,7 @@ if (array_key_exists("abonnement_newsletter", $_POST)) {
     $mdp = password_hash($_POST["mot_de_passe"], PASSWORD_BCRYPT);
 
     //Requête vers la base de données
-    $bdd = setConnection();
+    $db = Connection::set($config);
 
     //$add = $bdd->prepare('$request');
     /*$add = $bdd->prepare('INSERT INTO utilisateur
@@ -30,7 +30,7 @@ if (array_key_exists("abonnement_newsletter", $_POST)) {
       :motiv, :bio, :philo,
       :code_comm, :langage, :niveau);');*/
 
-    $add = $bdd->prepare('INSERT INTO utilisateur
+    $add = $db->prepare('INSERT INTO utilisateur
         VALUES (NULL, :civ, :nom, :prenom,
         :d_naiss,
         :add, :add_comp,
@@ -70,4 +70,4 @@ if (array_key_exists("abonnement_newsletter", $_POST)) {
     $add->bindParam("niveau", $_POST["id_niveau_niveau"], PDO::PARAM_INT);
 
     $add->execute();
-    $bdd = null;
+    $db = null;

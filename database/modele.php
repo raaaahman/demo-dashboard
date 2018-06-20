@@ -1,7 +1,8 @@
 <?php
+	$config = require 'config.php';
 	//Connexion  à la base de données
 	function setConnection ($config) {
-		$bdd = new PDO("mysql:host=localhos" . $config['host'] .";dbname=" . $config['database'] . ";charset=utf8", $config['user'], $config['password']);
+		$bdd = new PDO("mysql:host=" . $config['host'] .";dbname=" . $config['database'] . ";charset=utf8", $config['user'], $config['password']);
 
 		return $bdd;
 	}

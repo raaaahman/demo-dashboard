@@ -3,7 +3,10 @@ source/
 cvs/**
 images/**
 photo_profils/**
-modele/config.default.php
+database/config.php
+database/Connection.php
+database/DbQuery.php
+database/UserModele.php
 instructions.md
 LICENSE
 map.md

@@ -3,9 +3,9 @@
   session_start();
 
   //Appel des fonctions d'accès aux données
-  $config = require "modele/config.php";
-  require "modele/modele.php";
-	require "modele/helpers.php";
+  $config = require "database/config.php";
+  require "database/modele.php";
+	require "database/helpers.php";
 
   //En cas de déconnexion,  on supprime la session et on affiche le formulaire de connexion
   if (array_key_exists("action", $_GET) AND $_GET["action"] == "logout") {
