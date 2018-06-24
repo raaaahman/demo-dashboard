@@ -21,7 +21,9 @@
 						<label class="mdl-textfield__label" for="password">Mot de passe : </label>
 						<input class="mdl-textfield__input" type="password" name="password" id="password" />
 					</div>
-					<input class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" value="Connexion"/>
+					<div>
+						<input class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" value="Connexion"/>
+					</div>
 				</div>
 				<div class="mdl-card__actions mdl-card--border">
 						<span>Vous n'êtes pas membre?</span>

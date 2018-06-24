@@ -35,7 +35,6 @@ if (array_key_exists("abonnement_newsletter", $_POST)) {
         :add, :add_comp,
         :mdp, :email,
         :tel, :mobile,
-        :photo, :cv,
         :abo, :accept, :repas, :dispo, :motiv,
         :bio, :philo,
         :code_comm, :langage, :niveau)
@@ -55,8 +54,6 @@ if (array_key_exists("abonnement_newsletter", $_POST)) {
     $add->bindParam("email", $_POST["email"]);
     $add->bindParam("tel", $_POST["tel"]);
     $add->bindParam("mobile", $_POST["mobile"]);
-    $add->bindValue("photo", "photos/user_photo.jpg");
-    $add->bindValue("cv", "cv/user_cv.pdf");
     $add->bindParam("abo", $abo, PDO::PARAM_INT);
     $add->bindParam("accept", $accept, PDO::PARAM_INT);
     $add->bindParam("repas", $_POST["pref_heure_repas"]);

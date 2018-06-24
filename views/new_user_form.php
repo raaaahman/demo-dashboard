@@ -58,26 +58,6 @@
 	        </p>
 	      </div>
 
-	      <div class="control is-horizontal">
-	        <div class="control-label">
-	          <label class="label" for="photo_profil">Votre photo :</label>
-	        </div>
-	        <p class="control">
-	          <input type="file" accept=".png, .jpg, .jpeg" name="photo_profil" id="photo_profil">
-	        </p>
-	      </div>
-
-	    <!--Votre CV-->
-				<div class="control is-horizontal">
-					<div class="control-label">
-	          <label class="label" for="cv">Votre CV :</label>
-	        </div>
-	        <p class="control">
-	          <input type="file" accept=".doc, .docx, .pdf" name="cv" id="cv">
-	        </p>
-				</div>
-
-
 	<!-- Vos coordonnées -->
 	      <div class="control is-horizontal">
 	        <div class="control-label">
@@ -125,7 +105,7 @@
 	      <div class="control is-horizontal">
 
 	        <div class="control-label">
-	          <label class="label" for="ville">Code postal / Ville :</label>
+	          <label class="label" for="ville">Code postal / Ville *:</label>
 	        </div>
 	        <div class="control">
 	          <span class="select is-fullwidth">
