@@ -1,8 +1,7 @@
 <?php
-	$config = require 'config.php';
 	//Connexion  à la base de données
-	function setConnection ($config) {
-		$bdd = new PDO("mysql:host=" . $config['host'] .";dbname=" . $config['database'] . ";charset=utf8", $config['user'], $config['password']);
+	function setConnection () {
+		$bdd = new PDO('mysql:host=localhost;dbname=demo-dashboard;charset=utf8', 'root', 'l00kout');
 
 		return $bdd;
 	}
@@ -96,6 +95,7 @@
       $mail = $_POST["email"];
 
       $get_hash->execute();
+
       $hash = $get_hash->fetch();
 
       $get_hash->closeCursor();

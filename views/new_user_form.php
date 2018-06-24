@@ -1,6 +1,7 @@
 <?php
 	//On récupère les viles saisies dans le formulaire
 	$form_fields = getFormFields();
+	$user_details = null;
 	$page_title = "Ajouter un utilisateur";
 	$has_drawer_menu = false;
 

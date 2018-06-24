@@ -1,5 +1,4 @@
 <?php
-	require "config.php";
 	require "modele.php";
 
 	if (array_key_exists("abonnement_newsletter", $_POST)) {
@@ -47,5 +46,4 @@
 	$update->bindParam("niveau", $_POST["id_niveau_niveau"], PDO::PARAM_INT);
 
 	$update->execute();
-	echo $update->debugDumpParams();
 	$bdd = null;
