@@ -1,4 +1,5 @@
-bdd/
+bdd/**
+!bdd/structure+basedata.sql
 source/
 cvs/**
 images/**
