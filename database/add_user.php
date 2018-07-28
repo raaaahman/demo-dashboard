@@ -1,5 +1,5 @@
 <?php
-require "modele.php";
+$db = require "bootstrap.php";
 
 if (array_key_exists("abonnement_newsletter", $_POST)) {
       $abo = $_POST["abonnement_newsletter"];
@@ -14,22 +14,10 @@ if (array_key_exists("abonnement_newsletter", $_POST)) {
     }
 
     //Hashage du mot de passe
-    $mdp = password_hash($_POST["mot_de_passe"], PASSWORD_BCRYPT);
+    $mdp = $db->password_hash($_POST["mot_de_passe"], PASSWORD_BCRYPT);
 
     //Requête vers la base de données
-    $bdd = setConnection();
-
-    //$add = $bdd->prepare('$request');
-    /*$add = $bdd->prepare('INSERT INTO utilisateur
-      VALUES (NULL, :civ, :nom, :prenom,
-      :d_naiss, :add, :add_comp, :mdp,
-      :email, :tel, :mobile, NULL, NULL,
-      :abo, :accept,
-      :repas, :dispo,
-      :motiv, :bio, :philo,
-      :code_comm, :langage, :niveau);');*/
-
-    $add = $bdd->prepare('INSERT INTO utilisateur
+    $add = $db->prepare('INSERT INTO utilisateur
         VALUES (NULL, :civ, :nom, :prenom,
         :d_naiss,
         :add, :add_comp,
@@ -39,10 +27,6 @@ if (array_key_exists("abonnement_newsletter", $_POST)) {
         :bio, :philo,
         :code_comm, :langage, :niveau)
       ;');
-
-    /*for ($i = 0; $i < count($req_params); $i++) {
-      $add->bindParam($req_params[$i], $req_values[$i]);
-    }*/
 
     $add->bindParam("civ", $_POST["civilite"], PDO::PARAM_INT);
     $add->bindParam("nom", $_POST["nom"]);
@@ -66,4 +50,3 @@ if (array_key_exists("abonnement_newsletter", $_POST)) {
     $add->bindParam("niveau", $_POST["id_niveau_niveau"], PDO::PARAM_INT);
 
     $add->execute();
-    $bdd = null;

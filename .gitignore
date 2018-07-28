@@ -5,9 +5,8 @@ cvs/**
 images/**
 photo_profils/**
 database/config.php
-database/DbQuery.php
 database/UserModele.php
-database/Connection.php
 instructions.md
 LICENSE
 map.md
+.idea/

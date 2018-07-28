@@ -2,10 +2,7 @@
   session_name("SESSION");
   session_start();
 
-  //Appel des fonctions d'accès aux données
-  $config = require "database/config.php";
-  require "database/modele.php";
-	require "database/helpers.php";
+  $db = require 'database/bootstrap.php';
 
   //En cas de déconnexion,  on supprime la session et on affiche le formulaire de connexion
   if (array_key_exists("action", $_GET) AND $_GET["action"] == "logout") {
@@ -24,7 +21,7 @@
       switch ($_GET["action"]) {
         //Statistiques sur les utilisateurs
         case "stats":
-          $users_stats = getUsersStats();
+          $users_stats = $db->getUsersStats();
 
           require "views/users_stats.php";
           break;
@@ -43,7 +40,7 @@
         case "list":
         //DEFAULT
         default:
-          $users = getUsersList();
+          $users = $db->getUsersList();
 
           require "views/users_list.php";
 
@@ -52,7 +49,7 @@
 
     } else {
       //Récupération et affichage des utilisateurs
-        $users = getUsersList();
+        $users = $db->getUsersList();
 
         require "views/users_list.php";
     }
@@ -61,7 +58,7 @@
   } elseif(!empty($_POST)) {
 
     //Vérification du mot de passe haché
-    $pass = verifyPass();
+    $pass = $db->verifyPass();
 
     //modification de l'autorisation
     if ($pass) {
@@ -69,7 +66,7 @@
       $_SESSION["authorization"] = true;
 
       //Affichage de la liste de contacts
-      $users = getUsersList();
+      $users = $db->getUsersList();
       require "views/users_list.php";
     } else {
 
