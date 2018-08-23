@@ -29,9 +29,9 @@
 	        <div class="control">
 	          <span class="select is-fullwidth">
 	            <select name="civilite" id="civilite">
-	              <option value="M." <?php if ( getField('civilite', $user_details) == "M.") { echo "selected"; } ?>>M.</option>
-	              <option value="Mlle" <?php if ( getField('civilite', $user_details) == "Mlle") { echo "selected"; } ?>>Mlle</option>
-	              <option value="Mme" <?php if ( getField('civilite', $user_details) == "Mme") { echo "selected"; } ?>>Mme</option>
+	              <option value="1" <?php if ( getField('civilite', $user_details) == 1) { echo "selected"; } ?>>M.</option>
+	              <option value="2" <?php if ( getField('civilite', $user_details) == 2) { echo "selected"; } ?>>Mlle</option>
+	              <option value="3" <?php if ( getField('civilite', $user_details) == 3) { echo "selected"; } ?>>Mme</option>
 	              <option value="" <?php if (empty( getField('civilite', $user_details))) { echo "selected"; } ?> ></option>
 	            </select>
 	          </span>

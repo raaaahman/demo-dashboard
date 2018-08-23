@@ -34,7 +34,7 @@
         case "suppr":
           //Vérifie la confirmation
           if (array_key_exists("confirm", $_GET) AND $_GET["confirm"] == "true") {
-            supprUser($_GET["id"]);
+            $db->supprUser($_GET["id"]);
           }
         //affichage de la liste des utilisateurs
         case "list":
