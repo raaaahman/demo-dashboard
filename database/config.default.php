@@ -2,6 +2,7 @@
 
 return [
     'dsn' => 'mysql:host=localhost',
+    'charset' => 'charset=utf8',
     'dbname' => 'demo-dashboard',
     'user' => 'root',
     'pwd' => '',

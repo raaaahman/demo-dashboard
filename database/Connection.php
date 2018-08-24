@@ -7,7 +7,7 @@ class Connection
 	    try
         {
             return new PDO(
-                $config['dsn'] . ';dbname=' . $config['dbname'],
+                $config['dsn'] . ';dbname=' . $config['dbname'] . ';' . $config['charset'],
                 $config['user'],
                 $config['pwd'],
                 $config['options']
