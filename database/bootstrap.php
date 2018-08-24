@@ -1,17 +1,16 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: sleuvin
- * Date: 12/07/18
- * Time: 07:22
- *
  * Bootstrap connection to database
  */
 
 require "helpers.php";
 require "Connection.php";
 require "DbQuery.php";
+if (file_exists('config.php'))
+    $config = require "config.php";
+else
+    $config = require "config.default.php";
 
-$pdo = Connection::set();
+$pdo = Connection::set($config);
 
 return new DbQuery($pdo);
