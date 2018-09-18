@@ -10,9 +10,9 @@
     session_destroy();
 
     $log_message = "Vous avez été déconnecté avec succès.";
-    require "views/login.php";
+    require "views/login.view.php";
 	} elseif (array_key_exists("action", $_GET) AND $_GET["action"] == "create") {
-		require "views/new_user_form.php";
+		require "views/user_form.view.php";
   //Vérification des autorisations
   } elseif (array_key_exists("authorization", $_SESSION) AND $_SESSION["authorization"] == true) {
 
@@ -23,12 +23,12 @@
         case "stats":
           $users_stats = $db->getUsersStats();
 
-          require "views/users_stats.php";
+          require "views/users_stats.view.php";
           break;
 
 				case "edit":
 					$user_id= htmlspecialchars($_GET["id"]);
-					require "views/new_user_form.php";
+					require "views/user_form.view.php";
 					break;
         //Suppression d'un utilisateur
         case "suppr":
@@ -42,7 +42,7 @@
         default:
           $users = $db->getUsersList();
 
-          require "views/users_list.php";
+          require "views/users_list.view.php";
 
           break;
       }
@@ -51,7 +51,7 @@
       //Récupération et affichage des utilisateurs
         $users = $db->getUsersList();
 
-        require "views/users_list.php";
+        require "views/users_list.view.php";
     }
 
   //En cas de session non valide, on vérifie si un formulaire a été renvoyé
@@ -67,17 +67,17 @@
 
       //Affichage de la liste de contacts
       $users = $db->getUsersList();
-      require "views/users_list.php";
+      require "views/users_list.view.php";
     } else {
 
       $_SESSION["authorization"] = false;
 
       //Retour au login
       $log_message = "Votre email et/ou mot de passe est incorrect";
-      require "views/login.php";
+      require "views/login.view.php";
     }
   //Si le formulaire n'a pas été renvoyé
   } else {
 
-    require "views/login.php" ;
+    require "views/login.view.php";
   }
