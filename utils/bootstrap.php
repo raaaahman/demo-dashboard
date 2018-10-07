@@ -6,13 +6,11 @@
 require "database/helpers.php";
 require "database/Connection.php";
 require "database/DbQuery.php";
-require "utils/Router.php";
-require "utils/routes.php";
 
-if (file_exists('database/config.php'))
-    $config = require "database/config.php";
+if (file_exists('config.php'))
+    $config = require 'config.php';
 else
-    $config = require "database/config.default.php";
+    $config = require 'config.default.php';
 
 $pdo = Connection::set($config);
 

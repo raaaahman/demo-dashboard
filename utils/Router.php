@@ -2,22 +2,19 @@
 class Router {
 
     private $routes;
-
+    
     public function __construct($routes)
     {
-        if (isset($routes))
-            $this->setRoutes($routes);
+        if (isset($routes)) {
+            $this->routes = $routes;
+        }
     }
 
-    //Enregistre les routes pour l'application
-    public function setRoutes($routes)
-    {
-        $this->routes = $routes;
-    }
-
-    //Retourne le chemin vers le contrôleur selon l'URI
-    public function getRoute($uri)
-    {
-        return $this->routes[$uri];
+    //Charge le contrôleur associé à la route
+    public function direct($uri) {
+        if (array_key_exists($uri, $this->routes)) {
+            $route = $this->routes[trim($uri, '/')];
+            return SITE_ROOT . $route[0];
+        }
     }
 }

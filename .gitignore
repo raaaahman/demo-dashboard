@@ -14,3 +14,4 @@ database/config.php
 /nbproject/private/
 nbproject*
 docker*
+*.old
