@@ -6,6 +6,7 @@
 require "database/helpers.php";
 require "database/Connection.php";
 require "database/DbQuery.php";
+require "controllers/abstract-controller.php";
 
 if (file_exists('config.php'))
     $config = require 'config.php';

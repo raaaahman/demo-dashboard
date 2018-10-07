@@ -11,10 +11,17 @@ class Router {
     }
 
     //Charge le contrôleur associé à la route
-    public function direct($uri) {
-        if (array_key_exists($uri, $this->routes)) {
-            $route = $this->routes[trim($uri, '/')];
-            return SITE_ROOT . $route[0];
+    public function direct($route) {
+        
+        $route = explode('@', 
+            trim($this->routes[$route], '/')
+        );
+        require SITE_ROOT . 'controllers' . DIRECTORY_SEPARATOR . $route[0] . '.php';
+        $controller = new $route[0];
+        $method_name = $route[1];
+        
+        if (method_exists($controller, $method_name)) {
+           return $controller->$method_name();
         }
     }
 }

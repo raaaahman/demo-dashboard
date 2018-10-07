@@ -16,5 +16,5 @@ return [
             'action' => 'update'
         ]
     ],
-    'login' => [ 'controllers/login.php' ]
+    'login' => 'loginController@index'
 ];
