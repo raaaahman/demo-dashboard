@@ -1,24 +1,31 @@
 <?php
 class Router {
 
-    private $routes;
-    
-    public function __construct($routes)
-    {
-        if (isset($routes)) {
-            $this->routes = $routes;
-        }
+    private $routes = [
+        //Les routes accessibles via la méthode GEt
+        'GET' => [],
+        //Les routes accesibles via la méthode POSt
+        'POST' => []
+    ];
+
+    public function get($route, $controller) {
+        $this->routes['GET'][$route] = $controller;
+    }
+
+    public function post($route, $controller) {
+        $this->routes['POST'][$route] = $controller;
     }
 
     //Charge le contrôleur associé à la route
+    //Lance la méthode demandée
     public function direct($route) {
         
         $route = explode('@', 
-            trim($this->routes[$route], '/')
+            trim($this->routes[$_SERVER['REQUEST_METHOD']][$route], '/')
         );
-        require SITE_ROOT . 'controllers' . DIRECTORY_SEPARATOR . $route[0] . '.php';
+        require CTRL_DIR . $route[0] . '.php';
         $controller = new $route[0];
-        $method_name = $route[1];
+        $method_name = empty($route[1]) ? 'index' : $route[1];
         
         if (method_exists($controller, $method_name)) {
            return $controller->$method_name();

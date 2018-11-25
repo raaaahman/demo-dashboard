@@ -6,7 +6,7 @@
 	<div class="mdl-layout-spacer"></div>
 	<div class="mdl-cell mdl-cell--4-col demo-card-wide mdl-card mdl-shadow--2dp">
 		<div class="mdl-card__title">
-			<h4 class="mdl-card__title-text">Vérification des identifiants</h3>
+			<h4 class="mdl-card__title-text">Vérification des identifiants</h4>
 		</div>
 			<form method="post" action="index.php">
 				<div class="mdl-card__supporting-text">

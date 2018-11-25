@@ -10,8 +10,8 @@ $db = require 'bootstrap.php';
 
 //Instanciation d'un routeur
 require UTIL_DIR . 'Router.php';
+$router = new Router();
 $routes = require UTIL_DIR . 'routes.php';
-$router = new Router($routes);
 
 //Si l'utilisateur n'est pas connecté, on le dirige vers la page de connexion
 if ( !array_key_exists("authorization", $_SESSION) || !$_SESSION["authorization"] ) {

@@ -11,7 +11,7 @@ define('UTIL_DIR', SITE_ROOT . 'utils/');
 require "database/helpers.php";
 require DB_DIR . 'Connection.php';
 require DB_DIR . 'DbQuery.php';
-require CTRL_DIR . 'abstract-controller.php';
+require CTRL_DIR . 'AbstractController.php';
 
 if (file_exists('config.php'))
     $config = require SITE_ROOT . 'config.php';

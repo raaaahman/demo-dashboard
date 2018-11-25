@@ -1,6 +1,6 @@
 <?php
 
-return [
+/*return [
     '' => [ 'controllers/users_list.php' ],
     'users-list' => [ 'controllers/users_list.php' ],
     'users-stats' => [ 'controllers/users_stats.php' ],
@@ -16,5 +16,7 @@ return [
             'action' => 'update'
         ]
     ],
-    'login' => 'loginController@index'
-];
+    'login' => 'LoginController@index'
+];*/
+
+$router->get('login', 'LoginController');
