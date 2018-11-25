@@ -4,7 +4,6 @@ source/
 cvs/**
 images/**
 photo_profils/**
-database/config.php
 database/UserModele.php
 instructions.md
 LICENSE
@@ -15,3 +14,4 @@ database/config.php
 nbproject*
 docker*
 *.old
+config.php
