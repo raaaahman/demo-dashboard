@@ -4,14 +4,14 @@ class DbQuery
 {
 	public $pdo;
 
-	public static function SQLformat($value) {
+/*	public static function SQLformat($value) {
 	    switch(gettype($value)) {
             case 'string' :
                 return "'" . $value . "'";
             default:
                 return $value;
         }
-    }
+    }*/
 
 	function __construct($pdo) {
 		$this->pdo = $pdo;
@@ -26,14 +26,14 @@ class DbQuery
 		return $statement->fetchAll();
 	}
 
-	public function insertInto($table, $values) {
-	    $values = array_map(['DBQuery', 'SQLformat'], $values);
-	    $values = explode(',', $values);
-        $statement = $this->pdo->prepare("INSERT INTO {$table} VALUES ({$values})");
+	public function insertInto($table, $data) {
+	    $keys = implode(', ', array_keys($data));
+	    $values = implode('\', \'', array_values($data));
+        $statement = $this->pdo->prepare("INSERT INTO {$table} ({$keys}) VALUES ('{$values}')");
 
         var_dump($statement);
 
-        //$statement->execute();
+        $statement->execute();
     }
 
 	//Récupération des utilisateurs dans la bdd

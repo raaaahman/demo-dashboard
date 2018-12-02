@@ -28,7 +28,7 @@ class Router {
         $method_name = empty($route[1]) ? 'index' : $route[1];
         
         if (method_exists($controller, $method_name)) {
-           return $controller->$method_name();
+           $controller->$method_name();
         }
     }
 }
