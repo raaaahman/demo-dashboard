@@ -3,7 +3,7 @@
 abstract class AbstractController {
     
     //Affiche la page demandée
-    public function render($view) {
-        return SITE_ROOT . 'views' . DIRECTORY_SEPARATOR . $view . '.view.php';
+    public function render($page) {
+        include SITE_ROOT . 'views' . DIRECTORY_SEPARATOR . $page['view'] . '.view.php';
     }
 }

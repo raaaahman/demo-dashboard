@@ -6,13 +6,29 @@ class LoginController extends AbstractController {
     //Affichage du formulaire de connexion
     public function index() {
         
-        return $this->render('login');
+        $this->render([
+            'title' => 'Authentification',
+            'view' => 'login'
+        ]);
     }
 
     //Affiche le formulaire d'inscription
     public function newUser() {
+        global $db;
 
-        return $this->render( 'user_form');
+        $this->render([
+            'title' => 'Inscription',
+            'has_drawer_menu' => false,
+            'view' => 'user_form',
+            'action' => 'register',
+            'script' => 'sendForm',
+            'data' => [
+                'user' => [],
+                'ville' => $db->getList('ville'),
+                'langage' => $db->getList('langage'),
+                'niveau' => $db->getList('niveau')
+            ]
+        ]);
     }
 
     //Enregistre un nouvel utilisateur

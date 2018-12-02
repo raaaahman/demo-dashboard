@@ -1,6 +1,4 @@
 <?php
-	$page_title = "Authentification";
-
 	ob_start();
 ?>
 	<div class="mdl-layout-spacer"></div>
