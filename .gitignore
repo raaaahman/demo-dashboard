@@ -9,9 +9,9 @@ instructions.md
 LICENSE
 map.md
 .idea/
-database/config.php
 /nbproject/private/
 nbproject*
 docker*
 *.old
+**/config.php
 config.php

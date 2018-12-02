@@ -27,7 +27,7 @@
 				</div>
 				<div class="mdl-card__actions mdl-card--border">
 						<span>Vous n'êtes pas membre?</span>
-						<a href="?action=create">Inscrivez-vous</a>
+						<a href="sign-up">Inscrivez-vous</a>
 				</div>
 			</form>
 	</div>

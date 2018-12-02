@@ -8,4 +8,17 @@ class LoginController extends AbstractController {
         
         return $this->render('login');
     }
+
+    //Affiche le formulaire d'inscription
+    public function newUser() {
+
+        return $this->render( 'user_form');
+    }
+
+    //Enregistre un nouvel utilisateur
+    public function registerUser() {
+        global $db;
+
+        $db->insertInto('utilisateur', $_POST);
+    }
 }

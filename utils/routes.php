@@ -19,4 +19,10 @@
     'login' => 'LoginController@index'
 ];*/
 
+$router->get('', 'LoginController');
+
 $router->get('login', 'LoginController');
+
+$router->get('sign-up', 'LoginController@newUser');
+
+$router->post('register', 'LoginController@registerUser');
