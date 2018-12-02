@@ -9,11 +9,11 @@ class Router {
     ];
 
     public function get($route, $controller) {
-        $this->routes['GET'][$route] = $controller;
+        $this->routes['GET'][SITE_URL . DIRECTORY_SEPARATOR . $route] = $controller;
     }
 
     public function post($route, $controller) {
-        $this->routes['POST'][$route] = $controller;
+        $this->routes['POST'][SITE_URL . DIRECTORY_SEPARATOR . $route] = $controller;
     }
 
     //Charge le contrôleur associé à la route
