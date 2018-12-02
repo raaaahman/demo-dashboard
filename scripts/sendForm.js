@@ -5,7 +5,7 @@ $(document).ready(function() {
 
     if (action == 'register') {
         messageSuccess = '<p>Votre inscription a été prise en compte.</p>' +
-            '<a href="?action=login">Se connecter</a>';
+            '<a href="login">Se connecter</a>';
     }
 
     if (action == 'update') {
