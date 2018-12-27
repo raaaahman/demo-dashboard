@@ -12,6 +12,15 @@ class LoginController extends AbstractController {
         ]);
     }
 
+    public function verify() {
+        global $db;
+        global $router;
+
+        if ($db->verifyPass()) {
+            $router->direct('users-list');
+        }
+    }
+
     //Affiche le formulaire d'inscription
     public function newUser() {
         global $db;

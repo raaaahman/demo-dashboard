@@ -102,8 +102,9 @@ class DbQuery
 		//Récupérer le hash
       $get_hash = $this->pdo->prepare('SELECT mot_de_passe FROM utilisateur WHERE email = :user_email');
 
-      $get_hash->bindParam(":user_email", $mail);
       $mail = $_POST["email"];
+
+      $get_hash->bindParam(":user_email", $mail);
 
       $get_hash->execute();
 
