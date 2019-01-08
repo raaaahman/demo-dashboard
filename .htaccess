@@ -1,5 +1,5 @@
 RewriteEngine on
-RewriteCond %{REQUEST_URI} !-f
-RewriteCond %{REQUEST_URI} !-d
-#RewriteBase /your-site-root/
-RewriteRule ^.*$ index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteBase /your/site-root/
+RewriteRule ^.*$ index.php [END]
