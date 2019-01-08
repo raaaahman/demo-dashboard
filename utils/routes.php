@@ -10,4 +10,4 @@ $router->get('sign-up', 'LoginController@newUser');
 
 $router->post('register', 'LoginController@registerUser');
 
-//$router->post('users-list', 'UserController@list');
+$router->get('users-list', 'UsersController');
