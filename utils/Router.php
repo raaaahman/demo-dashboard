@@ -19,16 +19,22 @@ class Router {
     //Charge le contrôleur associé à la route
     //Lance la méthode demandée
     public function direct($route) {
-        
-        $route = explode('@', 
-            trim($this->routes[$_SERVER['REQUEST_METHOD']][$route], '/')
-        );
-        require CTRL_DIR . $route[0] . '.php';
-        $controller = new $route[0];
-        $method_name = empty($route[1]) ? 'index' : $route[1];
-        
-        if (method_exists($controller, $method_name)) {
-           $controller->$method_name();
+
+        if (array_key_exists($route, $this->routes[$_SERVER['REQUEST_METHOD']])) {
+            $route = explode('@',
+                trim($this->routes[$_SERVER['REQUEST_METHOD']][$route], '/')
+            );
+            $controller_file = CTRL_DIR . $route[0] . '.php';
+
+            require $controller_file;
+            $controller = new $route[0];
+            $method_name = empty($route[1]) ? 'index' : $route[1];
+
+            if (method_exists($controller, $method_name)) {
+                $controller->$method_name();
+            }
+        } else {
+            require SITE_ROOT . '/views/404.view.php';
         }
     }
 }
