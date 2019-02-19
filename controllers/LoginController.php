@@ -18,6 +18,8 @@ class LoginController extends AbstractController {
 
         if ($db->verifyPass()) {
             $router->direct('users-list');
+        } else {
+        	$router->direct('', 'GET');
         }
     }
 

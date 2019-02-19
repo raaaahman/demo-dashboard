@@ -9,32 +9,47 @@ class Router {
     ];
 
     public function get($route, $controller) {
-        $this->routes['GET'][SITE_URL . DIRECTORY_SEPARATOR . $route] = $controller;
+        $this->routes['GET'][$route] = $controller;
     }
 
     public function post($route, $controller) {
-        $this->routes['POST'][SITE_URL . DIRECTORY_SEPARATOR . $route] = $controller;
+        $this->routes['POST'][$route] = $controller;
     }
 
     //Charge le contrôleur associé à la route
     //Lance la méthode demandée
-    public function direct($route) {
+    public function direct($route, $force_method = false) {
+    	$request_method = $force_method ? $force_method : $_SERVER['REQUEST_METHOD'];
+    	$page_found = false;
 
-        if (array_key_exists($route, $this->routes[$_SERVER['REQUEST_METHOD']])) {
+    	//Sur un serveur local, l'URI peut inclure la hiérarchie des dossiers
+	    //cette ligne prend uniquement la partie qui nous intéresse
+	    if (preg_match(
+	    	 '/' . preg_replace('/\//',  '\/', SITE_URL) . '/',
+		    $route)
+	    ) {
+			$route = substr($route, strlen(SITE_URL . DIRECTORY_SEPARATOR));
+	    }
+
+	    //FIxME: cannot find home route (empty string)
+        if (array_key_exists( $route , $this->routes[$request_method])) {
             $route = explode('@',
-                trim($this->routes[$_SERVER['REQUEST_METHOD']][$route], '/')
+                trim($this->routes[$request_method][$route], '/')
             );
             $controller_file = CTRL_DIR . $route[0] . '.php';
 
-            require $controller_file;
+            require_once $controller_file;
             $controller = new $route[0];
             $method_name = empty($route[1]) ? 'index' : $route[1];
 
             if (method_exists($controller, $method_name)) {
                 $controller->$method_name();
+                $page_found = true;
             }
-        } else {
-            require SITE_ROOT . '/views/404.view.php';
+        }
+
+        if (!$page_found) {
+	        require SITE_ROOT . '/views/404.view.php';
         }
     }
 }
