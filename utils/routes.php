@@ -1,13 +1,11 @@
 <?php
 
-$router->get('', 'LoginController');
+$router->get('/', 'UsersController');
 
-$router->get('login', 'LoginController');
+$router->get('/login', 'UsersController@authenticateUser');
 
-$router->post( 'authenticate', 'LoginController@verify');
+$router->get('/sign-up', 'UsersController@newUser');
 
-$router->get('sign-up', 'LoginController@newUser');
+$router->post('/register', 'UserController@registerUser');
 
-$router->post('register', 'LoginController@registerUser');
-
-$router->get('users-list', 'UsersController');
+$router->get('/users-list', 'UsersController');

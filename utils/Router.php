@@ -28,13 +28,12 @@ class Router {
 	    	 '/' . preg_replace('/\//',  '\/', SITE_URL) . '/',
 		    $route)
 	    ) {
-			$route = substr($route, strlen(SITE_URL . DIRECTORY_SEPARATOR));
+			$route = substr($route, strlen(SITE_URL ) );
 	    }
 
-	    //FIxME: cannot find home route (empty string)
         if (array_key_exists( $route , $this->routes[$request_method])) {
             $route = explode('@',
-                trim($this->routes[$request_method][$route], '/')
+                $this->routes[$request_method][$route]
             );
             $controller_file = CTRL_DIR . $route[0] . '.php';
 
@@ -52,4 +51,6 @@ class Router {
 	        require SITE_ROOT . '/views/404.view.php';
         }
     }
+
+    //TODO: implement a redirect() method
 }
