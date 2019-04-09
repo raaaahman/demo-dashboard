@@ -1,6 +1,7 @@
 <?php
 
 define('SITE_URL', 'example.com');
+define('SITE_SALT', '1234');
 
 return [
     'dsn' => 'mysql:host=localhost',

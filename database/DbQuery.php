@@ -4,15 +4,6 @@ class DbQuery
 {
 	public $pdo;
 
-/*	public static function SQLformat($value) {
-	    switch(gettype($value)) {
-            case 'string' :
-                return "'" . $value . "'";
-            default:
-                return $value;
-        }
-    }*/
-
 	function __construct($pdo) {
 		$this->pdo = $pdo;
 	}
@@ -30,8 +21,6 @@ class DbQuery
 	    $keys = implode(', ', array_keys($data));
 	    $values = implode('\', \'', array_values($data));
         $statement = $this->pdo->prepare("INSERT INTO {$table} ({$keys}) VALUES ('{$values}')");
-
-        var_dump($statement);
 
         $statement->execute();
     }

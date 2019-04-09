@@ -35,7 +35,7 @@
 <?php
 
 	//La boucle affiche les utilisateurs un par un
-	foreach($users as $user) {
+	foreach($page['data']['users'] as $user) {
 
 		echo "<tr><td class='mdl-data-table__cell--non-numeric'>" . $user["Noms"] ."</td>" .
 		"<td class='mdl-data-table__cell--non-numeric'>" . $user["NomVille"] . "</td>" .
