@@ -71,7 +71,10 @@ class UsersController extends AbstractController {
 	//Enregistre un nouvel utilisateur
 	public function registerUser() {
 		global $db;
+		global $router;
 
 		$db->insertInto('utilisateur', $_POST);
+
+		$router->redirect('/', 'GET');
 	}
 }

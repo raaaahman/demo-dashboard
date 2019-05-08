@@ -18,8 +18,19 @@ class DbQuery
 	}
 
 	public function insertInto($table, $data) {
-	    $keys = implode(', ', array_keys($data));
-	    $values = implode('\', \'', array_values($data));
+
+		$keys = [];
+	    foreach(array_keys($data) as $key){
+	    	$keys[] = addslashes(htmlspecialchars($key));
+	    }
+		$keys = implode(', ', $keys);
+
+	    $values = [];
+		foreach (array_values($data) as $value) {
+			$values[] = addslashes(htmlspecialchars($value));
+		}
+	    $values = implode('\', \'', $values);
+
         $statement = $this->pdo->prepare("INSERT INTO {$table} ({$keys}) VALUES ('{$values}')");
 
         $statement->execute();
