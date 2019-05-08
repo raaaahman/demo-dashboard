@@ -135,8 +135,11 @@ ___  ___  ___  _____ _   _
 		<script   src="js/jquery-3.1.1.min.js"></script>
 		<script   src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"   integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="   crossorigin="anonymous"></script>
 
-		<?php if (isset($page['script'])) { ?>
-            <script src="scripts/<?php echo $page['script']; ?>.js" type="text/javascript"></script>
-		<?php } ?>
+		<?php if (array_key_exists( 'scripts',  $page)) {
+		    foreach($page['scripts'] as $script ) {?>
+                <script src="js/<?php echo $script; ?>.js" type="text/javascript"></script>
+		<?php
+		    }
+        }?>
 	</body>
 </html>

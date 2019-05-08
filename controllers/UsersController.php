@@ -35,7 +35,10 @@ class UsersController extends AbstractController {
 			'has_drawer_menu' => false,
 			'view' => 'user_form',
 			'action' => 'register',
-			'script' => 'sendForm',
+			'scripts' => array(
+				'sendForm',
+				'logger'
+			),
 			'data' => [
 				'user' => [],
 				'ville' => $db->getList('ville'),
