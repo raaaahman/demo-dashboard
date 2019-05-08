@@ -14,7 +14,7 @@ class LoginManager {
 		global $router;
 
 	    if ( !array_key_exists('token', $_SESSION) ||  $_SESSION['token'] != LoginManager::getToken() ) {
-		    $router->direct('/login', 'GET'); //TODO: Use a redirect instead
+		    $router->redirect('/login', 'GET');
 	    }
     }
 

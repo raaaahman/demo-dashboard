@@ -6,7 +6,7 @@
 		<div class="mdl-card__title">
 			<h4 class="mdl-card__title-text">Vérification des identifiants</h4>
 		</div>
-			<form method="post" action="authenticate">
+			<form method="get" action="">
 				<div class="mdl-card__supporting-text">
 					<?php if (isset($log_message)) {
 						echo "<p>" . $log_message . "</p>";

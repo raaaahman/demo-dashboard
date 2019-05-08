@@ -52,5 +52,13 @@ class Router {
         }
     }
 
-    //TODO: implement a redirect() method
+	public function redirect($route, $force_method = false ) {
+    	//Indique au navigateur une redirection
+    	header('Status-Code', 302 );
+
+    	$this->direct($route, $force_method);
+
+    	//Interrompt le script original
+		die();
+	}
 }
