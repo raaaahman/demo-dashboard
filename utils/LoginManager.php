@@ -9,23 +9,27 @@ class LoginManager {
     }
 
     //Vérifie le token stocké dans la session PHP
-	//Si l'utilisateur n'est pas loggé, renvoie vers le formulaire de connexion
     public static function verifyToken() {
-		global $router;
+    	$logged = false;
 
-	    if ( !array_key_exists('token', $_SESSION) ||  $_SESSION['token'] != LoginManager::getToken() ) {
-		    $router->redirect('/login', 'GET');
+	    if ( array_key_exists('token', $_SESSION) &&  $_SESSION['token'] === LoginManager::getToken() ) {
+		    $logged = true;
 	    }
+
+	    return $logged;
     }
 
-    public function verifyPassword() {
+    //Vérifie le mot de pass de l'utilisateur, et stocke un token s'il est valide
+    public static function verifyPassword($user, $password) {
         global $db;
-        global $router;
+        $authorize = false;
 
-        if ($db->verifyPass()) {
+        if ($db->verifyPass($user, $password)) {
         	$_SESSION['token'] = LoginManager::getToken();
-        	$router->direct('/', 'GET');
+        	$authorize = true;
         }
+
+        return $authorize;
     }
 
 }

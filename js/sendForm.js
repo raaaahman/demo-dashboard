@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    let action = $("#new-user-form").attr('action');
+    /*
     let messageSuccess = '';
 
     if (action == 'register') {
@@ -12,20 +12,30 @@ $(document).ready(function() {
         messageSuccess = '<p>L\'utilisateur a été mis à jour.</p>' +
             '<a href="?action=list">Retour à la liste des utilisateurs</a>';
     }
+    */
 
+    function logResults(request, status) {
+        switch (status) {
+            case 'success' :
+                console.log('Done.');
+                break;
+            case 'error' :
+                console.log('Failed.');
+                break;
+        }
+    }
 
     //Evenement sur le formulaire
 
-    $("#new-user-form").on('submit', function() {
+    $('.ajax-form').on('submit', function(event) {
+        let form = $(event.target);
 
         //GO AJAX!
-        $.post(action, $('#new-user-form').serialize(), function(data) {
-            $('#new-user-form').before(
-                messageSuccess
-            );
-            console.log(data);
-            //Toggle le formulaire
-            $('#new-user-form').slideToggle();
+        $.ajax({
+            url : form.attr('action'),
+            method : form.attr('method') !== undefined ? form.attr('method') : 'post',
+            data :  form.serialize(),
+            complete : logResults
         });
 
         return false; //Pas de changement de page

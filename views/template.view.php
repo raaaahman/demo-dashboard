@@ -104,13 +104,13 @@
 			<?php if(array_key_exists('has_drawer_menu', $page) && $page['has_drawer_menu'] == true) : ?>
 				<aside class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
 				  <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-				    <a class="mdl-navigation__link" href="?action=list"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">account_box</i>Afficher les utilisateurs</a>
+				    <a class="mdl-navigation__link" href="users-list"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">account_box</i>Afficher les utilisateurs</a>
 						<!--
 				    <a class="mdl-navigation__link" href="?action=create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">note_add</i>Ajouter un utilisateur</a>
 					-->
-				    <a class="mdl-navigation__link" href="?action=stats"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">assessment</i>Statistisques</a>
+				    <a class="mdl-navigation__link" href="users-stats"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">assessment</i>Statistisques</a>
 				    <div class="mdl-layout-spacer"></div>
-				    <a class="mdl-navigation__link" href="?action=logout"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">highlight_off</i>Log out</a>
+				    <a class="mdl-navigation__link" href="logout"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">highlight_off</i>Log out</a>
 				  </nav>
 				</aside>
 			<?php endif; ?>
@@ -136,7 +136,7 @@ ___  ___  ___  _____ _   _
 		<script   src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"   integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="   crossorigin="anonymous"></script>
 
 		<?php if (array_key_exists( 'scripts',  $page)) {
-		    foreach($page['scripts'] as $script ) {?>
+		    foreach($page['scripts'] as $script) {?>
                 <script src="js/<?php echo $script; ?>.js" type="text/javascript"></script>
 		<?php
 		    }

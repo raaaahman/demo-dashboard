@@ -87,13 +87,12 @@ class DbQuery
 	   	return $users_stats;
 	}
 
-	function verifyPass() {
+	function verifyPass($user, $password) {
+		//TODO: store password as a hash
 		//Récupérer le hash
       $get_hash = $this->pdo->prepare('SELECT mot_de_passe FROM utilisateur WHERE email = :user_email');
 
-      $mail = $_POST["email"];
-
-      $get_hash->bindParam(":user_email", $mail);
+      $get_hash->bindParam(":user_email", $user);
 
       $get_hash->execute();
 
@@ -102,7 +101,7 @@ class DbQuery
       $get_hash->closeCursor();
 
       //Comparaison du hash avec le mdp
-      return password_verify($_POST["password"], $hash['mot_de_passe']);
+      return $password == $hash['mot_de_passe'];
 	}
 
 	function getUser($id) {
