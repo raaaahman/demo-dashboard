@@ -13,9 +13,9 @@
 	        <div class="control">
 	          <span class="select is-fullwidth">
 	            <select name="civilite" id="civilite">
-	              <option value="1" <?php if ( getField('civilite', $page["data"]["user"]) == 1) { echo "selected"; } ?>>M.</option>
-	              <option value="2" <?php if ( getField('civilite', $page["data"]["user"]) == 2) { echo "selected"; } ?>>Mlle</option>
-	              <option value="3" <?php if ( getField('civilite', $page["data"]["user"]) == 3) { echo "selected"; } ?>>Mme</option>
+	              <option value="1" <?php if ( getField('civilite', $page["data"]["user"]) == 'M.') { echo "selected"; } ?>>M.</option>
+	              <option value="2" <?php if ( getField('civilite', $page["data"]["user"]) == 'Mlle') { echo "selected"; } ?>>Mlle</option>
+	              <option value="3" <?php if ( getField('civilite', $page["data"]["user"]) == 'Mme') { echo "selected"; } ?>>Mme</option>
 	              <option value="" <?php if (empty( getField('civilite', $page["data"]["user"]))) { echo "selected"; } ?> ></option>
 	            </select>
 	          </span>
@@ -228,8 +228,8 @@
 	        <p class="control">
 	          <input class="button is-primary" type="submit" value="Envoyer">
 	        </p>
-					<?php if (isset($user_id)) :?>
-						<input type="hidden" name="identifiant_utilisateur" value="<?php echo $user_id; ?>"/>
+					<?php if (isset($page['data']['user']['identifiant_utilisateur'])) :?>
+						<input type="hidden" name="identifiant_utilisateur" value="<?php echo $page['data']['user']['identifiant_utilisateur']; ?>"/>
 					<?php endif; ?>
 	  </form>
 </div>

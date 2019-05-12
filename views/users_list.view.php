@@ -42,7 +42,7 @@
 		"<td class='mdl-data-table__cell--non-numeric'>" . $user["NomPays"] . "</td>" .
 		"<td class='mdl-data-table__cell--non-numeric'>" . $user["Langage"] . "</td>" .
 		"<td class='mdl-data-table__cell--non-numeric'>" . $user["Niveau"] . "</td>" .
-		"<td class='mdl-data-table__cell--non-numeric'><a href='?action=edit&id=" . $user["ID"] . "'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>edit</i></a></td>" .
+		"<td class='mdl-data-table__cell--non-numeric'><a href='edit-user?id=" . $user["ID"] . "'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>edit</i></a></td>" .
 		"<td class='mdl-data-table__cell--non-numeric'><a href='?action=suppr&id=" . $user["ID"] . "'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>delete</i></a></td>" .
 		"</tr>";
 

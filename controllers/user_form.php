@@ -12,7 +12,7 @@ $page_title = "Ajouter un utilisateur";
 $has_drawer_menu = false;
 
 if (isset($user_id)) {
-        $user_details = $db->getUser($user_id);
+        $user_details = $db->getEntry('utilisateur', 'identifiant_utilisateur', $user_id);
         $page_title = "Modifier les informations de " . $user_details["prenom"] . " " . $user_details["nom"];
         $has_drawer_menu = true;
 }

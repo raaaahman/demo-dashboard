@@ -36,6 +36,28 @@ class DbQuery
         $statement->execute();
     }
 
+	function getEntry($table, $field, $value) {
+		$request = $this->pdo->prepare("SELECT * FROM {$table} WHERE {$field} = :value");
+		$request->bindParam(':value', $value);
+		$request->execute();
+		$results = $request->fetch();
+		return $results;
+	}
+
+    public function update($table, $data, $id_label = 'id') {
+		$sql_set = '';
+		foreach ($data as $key => $value) {
+			if ($key !== $id_label) {
+				$sql_set .= $key . ' = \'' . htmlspecialchars($value) . '\', ';
+			}
+		}
+		$sql_set = trim($sql_set, ', ');
+
+		$statement = $this->pdo->prepare("UPDATE {$table} SET {$sql_set} WHERE {$id_label} = {$data[$id_label]};");
+
+		$statement->execute();
+    }
+
 	//Récupération des utilisateurs dans la bdd
 	function getUsersList() {
 
@@ -113,14 +135,6 @@ class DbQuery
 
       //Comparaison du hash avec le mdp
       return $password == $hash['mot_de_passe'];
-	}
-
-	function getUser($id) {
-		$request = $this->pdo->prepare('SELECT * FROM utilisateur WHERE identifiant_utilisateur = :id;');
-		$request->bindParam(':id', $id);
-		$request->execute();
-		$results = $request->fetch();
-		return $results;
 	}
 
 	function supprUser($id) {

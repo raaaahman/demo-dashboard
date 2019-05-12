@@ -56,9 +56,9 @@ class UsersController extends AbstractController {
 			'has_drawer_menu' => false,
 			'view' => 'user_form',
 			'action' => 'register',
-			'scripts' => array(
+			'scripts' => [
 				'sendForm'
-			),
+			],
 			'data' => [
 				'user' => [],
 				'ville' => $db->getList('ville'),
@@ -76,5 +76,35 @@ class UsersController extends AbstractController {
 		$db->insertInto('utilisateur', $_POST);
 
 		$router->redirect('/', 'GET');
+	}
+
+	//Formulaire de modification d'un utilisateur existant
+	public function editUser() {
+    	global  $db;
+    	$id = htmlspecialchars($_GET['id']);
+
+    	$this->render([
+    		'title' => 'Modifier l\'utilisateur',
+		    'has_drawer_menu' => true,
+		    'view' => 'user_form',
+		    'action' => 'update-user',
+		    'data' => [
+		    	'user' => $db->getEntry('utilisateur', 'identifiant_utilisateur', $id),
+			    'ville' => $db->getList('ville'),
+			    'language' => $db->getList('langage'),
+			    'niveau' => $db->getList('niveau')
+		    ]
+
+	    ]);
+	}
+
+	//Enregistre les modification en base de données
+	public function updateUser() {
+    	global $db;
+    	global $router;
+
+    	$db->update('utilisateur', $_POST, 'identifiant_utilisateur');
+
+	    $router->redirect('/users-list', 'GET');
 	}
 }
