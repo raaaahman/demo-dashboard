@@ -132,7 +132,7 @@
 	          <span class="select is-fullwidth">
 	            <select name="id_langage_langage" id="langage">
 	            <?PhP
-	                foreach($page["data"]["langage"] as $show) {
+	                foreach($page["data"]["language"] as $show) {
 										$option = "<option value=\"" . $show["id_langage"] . "\"";
 										if (getField("id_langage_langage", $page["data"]["user"]) == $show["id_langage"]) {
 											$option .= " selected";

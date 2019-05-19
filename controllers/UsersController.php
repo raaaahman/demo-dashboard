@@ -62,7 +62,7 @@ class UsersController extends AbstractController {
 			'data' => [
 				'user' => [],
 				'ville' => $db->getList('ville'),
-				'langage' => $db->getList('langage'),
+				'language' => $db->getList('langage'),
 				'niveau' => $db->getList('niveau')
 			]
 		]);
