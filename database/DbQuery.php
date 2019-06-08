@@ -58,6 +58,14 @@ class DbQuery
 		$statement->execute();
     }
 
+    public function delete($table, $id, $id_label = 'id') {
+		$statement = $this->pdo->prepare("DELETE FROM {$table} WHERE {$id_label} = :id");
+
+		$statement->bindParam(':id', intval(htmlspecialchars($id)));
+
+		$statement->execute();
+    }
+
 	//Récupération des utilisateurs dans la bdd
 	function getUsersList() {
 

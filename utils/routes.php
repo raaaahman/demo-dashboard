@@ -15,3 +15,5 @@ $router->get('/users-list', 'UsersController');
 $router->get( '/edit-user', 'UsersController@editUser');
 
 $router->post('/update-user', 'UsersController@updateUser');
+
+$router->post( '/delete-user', 'UsersController@deleteUser');

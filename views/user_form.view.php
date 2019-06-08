@@ -241,40 +241,4 @@
   $main_content = ob_get_contents();
   ob_end_clean();
 
-	//Script d'envoi de formulaire en ajax
-	ob_start();
-?>
-	<script type="text/javascript">
-	var action = "database/add_user.php";
-	var messageSuccess = '<p>Votre inscription a été prise en compte.</p>' +
-	'<a href="?action=login">Se connecter</a>';
-	<?php if (isset($user_id)) {
-		echo "action = 'database/update_user.php';";
-		echo "messageSuccess = '<p>L\'utilisateur a été mis à jour.</p>';";
-		echo "messageSuccess += '<a href=\"?action=list\">Retour à la liste des utilisateurs</a>';";
-	} ?>
-		$(document).ready(function() {
-
-			//Evenement sur le formulaire
-
-			$("#new-user-form").on('submit', function() {
-
-				//GO AJAX!
-				$.post(action, $('#new-user-form').serialize(), function(data) {
-					$('#new-user-form').before(
-						messageSuccess
-					);
-					console.log(data);
-					//Toggle le formulaire
-					$('#new-user-form').slideToggle();
-				});
-
-				return false; //Pas de changement de page
-			});
-		});
-	</script>
-<?php
-	$script = ob_get_contents();
-	ob_end_clean();
-
   require "template.view.php";

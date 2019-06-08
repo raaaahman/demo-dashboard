@@ -19,6 +19,9 @@ class UsersController extends AbstractController {
             'title' => 'Liste des utilisateurs',
             'view' => 'users_list',
             'has_drawer_menu' => true,
+            'scripts' => [
+            	'handleButton'
+            ],
             'data' =>   [ 'users' => $users ]
         ]);
     }
@@ -106,5 +109,13 @@ class UsersController extends AbstractController {
     	$db->update('utilisateur', $_POST, 'identifiant_utilisateur');
 
 	    $router->redirect('/users-list', 'GET');
+	}
+
+	//Supprime un utilisateur de la base de données
+	public function deleteUser() {
+    	global $db;
+    	global $router;
+
+    	$db->delete('utilisateur', $_POST['userId'], 'identifiant_utilisateur');
 	}
 }

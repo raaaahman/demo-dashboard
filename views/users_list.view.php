@@ -43,7 +43,7 @@
 		"<td class='mdl-data-table__cell--non-numeric'>" . $user["Langage"] . "</td>" .
 		"<td class='mdl-data-table__cell--non-numeric'>" . $user["Niveau"] . "</td>" .
 		"<td class='mdl-data-table__cell--non-numeric'><a href='edit-user?id=" . $user["ID"] . "'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>edit</i></a></td>" .
-		"<td class='mdl-data-table__cell--non-numeric'><a href='?action=suppr&id=" . $user["ID"] . "'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>delete</i></a></td>" .
+		"<td class='mdl-data-table__cell--non-numeric'><a class='ajax-button' href='#' data-action='delete-user' data-user-id='" . $user["ID"] . "'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>delete</i></a></td>" .
 		"</tr>";
 
 		if (array_key_exists("action", $_GET) AND $_GET["action"] == "suppr" AND $_GET["id"] == $user["ID"]) {
