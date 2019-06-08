@@ -2,7 +2,6 @@
 
 class LoginManager {
 
-	//TODO: store token in database for each user
 	//Chaque jour, le token de sécurité est changé
     public static function getToken() {
     	return md5(strval(date("d")) . SITE_SALT);
@@ -24,7 +23,9 @@ class LoginManager {
         global $db;
         $authorize = false;
 
-        if ($db->verifyPass($user, $password)) {
+        $user = $db->getEntry('utilisateur', 'email', $user);
+        if ($user['mot_de_passe'] === $password) {
+	        session_regenerate_id();
         	$_SESSION['token'] = LoginManager::getToken();
         	$authorize = true;
         }

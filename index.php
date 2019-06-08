@@ -1,7 +1,13 @@
 <?php
+ini_set('session.use_only_cookies', true);
 //Gestion de la session
 session_name("SESSION");
 session_start();
+if (!array_key_exists('last_connection', $_SESSION)
+|| $_SESSION['last_connection'] < (time() - 60)) {
+	session_regenerate_id();
+	$_SESSION['last_connection'] = time();
+}
 
 require 'bootstrap.php';
 
