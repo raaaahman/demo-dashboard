@@ -28,7 +28,8 @@ Cette interface back office est un projet d'étude conçu dans le cadre d'une fo
 
 ## Refactoring
 
-Modification vers une architecture MVC, suivant les tutoriels sur [Laracasts](https://laracasts.com/series/php-for-beginners)
+- Modification vers une architecture MVC, suivant les tutoriels sur [Laracasts](https://laracasts.com/series/php-for-beginners)
+- Sécurisation selon les recettes du [*PHP Cookbook*, éditions *O'Reilly*](http://shop.oreilly.com/product/9781565926813.do)
 
 
 
