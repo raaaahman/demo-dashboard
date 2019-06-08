@@ -35,15 +35,15 @@
 <?php
 
 	//La boucle affiche les utilisateurs un par un
-	foreach($users as $user) {
+	foreach($page['data']['users'] as $user) {
 
 		echo "<tr><td class='mdl-data-table__cell--non-numeric'>" . $user["Noms"] ."</td>" .
 		"<td class='mdl-data-table__cell--non-numeric'>" . $user["NomVille"] . "</td>" .
 		"<td class='mdl-data-table__cell--non-numeric'>" . $user["NomPays"] . "</td>" .
 		"<td class='mdl-data-table__cell--non-numeric'>" . $user["Langage"] . "</td>" .
 		"<td class='mdl-data-table__cell--non-numeric'>" . $user["Niveau"] . "</td>" .
-		"<td class='mdl-data-table__cell--non-numeric'><a href='?action=edit&id=" . $user["ID"] . "'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>edit</i></a></td>" .
-		"<td class='mdl-data-table__cell--non-numeric'><a href='?action=suppr&id=" . $user["ID"] . "'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>delete</i></a></td>" .
+		"<td class='mdl-data-table__cell--non-numeric'><a href='edit-user?id=" . $user["ID"] . "'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>edit</i></a></td>" .
+		"<td class='mdl-data-table__cell--non-numeric'><a class='ajax-button' href='#' data-action='delete-user' data-user-id='" . $user["ID"] . "'><i class='mdl-color-text--blue-grey-400 material-icons' role='presentation'>delete</i></a></td>" .
 		"</tr>";
 
 		if (array_key_exists("action", $_GET) AND $_GET["action"] == "suppr" AND $_GET["id"] == $user["ID"]) {
@@ -78,4 +78,4 @@
 <?php $main_content = ob_get_contents();
 	ob_end_clean();
 
-	require "template.php";
+	require "template.view.php";

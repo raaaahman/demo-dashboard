@@ -8,8 +8,7 @@ Cette interface back office est un projet d'étude conçu dans le cadre d'une fo
 - Utiliser le module PDO et le langage MySQL pour effectuer des requêtes vers la base de données
 - Utiliser les variables superglobales de formulaires et de session
 - Effectuer des requêtes AJAX
-- Utiliser un "design bootstrap" afin d'économiser du temps sur la stylisation
-- Utiliser des API de Google
+- Utiliser un "design bootstrap" afin d'économiser du temps sur le visuel
 
 ## Outils et technologies
 
@@ -19,9 +18,17 @@ Cette interface back office est un projet d'étude conçu dans le cadre d'une fo
 - Javascript ES5
 - JQuery 3
 - Google Material Design Lite
-- Google Maps API
-- Google Charts API
+
+## Installation
+
+1. Cloner le répertoire
+2. Modifier le fichier *.config-default* avec les identifiants pour la base de données, puis le renommer *.config*
+3. Modifier le fichier *.htaccess* avec l'url du site (si différent de l'url du serveur)
+
 
 ## Refactoring
 
-Modification vers une architecture ressemblant au pattern MVC, suivant les tutoriels sur [Laracasts](https://laracasts.com/series/php-for-beginners)
+Modification vers une architecture MVC, suivant les tutoriels sur [Laracasts](https://laracasts.com/series/php-for-beginners)
+
+
+

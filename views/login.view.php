@@ -1,14 +1,12 @@
 <?php
-	$page_title = "Authentification";
-
 	ob_start();
 ?>
 	<div class="mdl-layout-spacer"></div>
 	<div class="mdl-cell mdl-cell--4-col demo-card-wide mdl-card mdl-shadow--2dp">
 		<div class="mdl-card__title">
-			<h4 class="mdl-card__title-text">Vérification des identifiants</h3>
+			<h4 class="mdl-card__title-text">Vérification des identifiants</h4>
 		</div>
-			<form method="post" action="index.php">
+			<form class="ajax-form" method="get" action="login">
 				<div class="mdl-card__supporting-text">
 					<?php if (isset($log_message)) {
 						echo "<p>" . $log_message . "</p>";
@@ -27,7 +25,7 @@
 				</div>
 				<div class="mdl-card__actions mdl-card--border">
 						<span>Vous n'êtes pas membre?</span>
-						<a href="?action=create">Inscrivez-vous</a>
+						<a href="sign-up">Inscrivez-vous</a>
 				</div>
 			</form>
 	</div>
@@ -37,4 +35,4 @@
 	$main_content = ob_get_contents();
 	ob_end_clean();
 
-	require "template.php";
+	require "template.view.php";
