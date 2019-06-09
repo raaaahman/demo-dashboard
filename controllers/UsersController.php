@@ -9,7 +9,7 @@ class UsersController extends AbstractController {
         global $db;
         global $router;
 
-        if ( LoginManager::verifyToken() !== true ) {
+        if ( LoginManager::isLogged() !== true ) {
         	$router->redirect('/login', 'GET');
         }
 
@@ -34,6 +34,9 @@ class UsersController extends AbstractController {
 		    array_key_exists( 'password', $_GET ) &&
 		    LoginManager::verifyPassWord($_GET['email'], $_GET['password']) == true
 		) {
+			session_regenerate_id();
+			$_SESSION['token'] = LoginManager::getToken();
+			$_SESSION['logged'] = true;
 			$router->redirect('/', 'GET');
 		}
 
@@ -76,8 +79,9 @@ class UsersController extends AbstractController {
 		global $db;
 		global $router;
 
-		$db->insertInto('utilisateur', $_POST);
-
+		if (LoginManager::verifyToken($_POST)) {
+			$db->insertInto( 'utilisateur', $_POST, ['token' => false] );
+		}
 		$router->redirect('/', 'GET');
 	}
 
@@ -106,8 +110,9 @@ class UsersController extends AbstractController {
     	global $db;
     	global $router;
 
-    	$db->update('utilisateur', $_POST, 'identifiant_utilisateur');
-
+    	if (LoginManager::verifyToken($_POST)) {
+		    $db->update('utilisateur', $_POST, 'identifiant_utilisateur', ['token' => false]);
+	    }
 	    $router->redirect('/users-list', 'GET');
 	}
 

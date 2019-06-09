@@ -228,9 +228,10 @@
 	        <p class="control">
 	          <input class="button is-primary" type="submit" value="Envoyer">
 	        </p>
-					<?php if (isset($page['data']['user']['identifiant_utilisateur'])) :?>
-						<input type="hidden" name="identifiant_utilisateur" value="<?php echo $page['data']['user']['identifiant_utilisateur']; ?>"/>
-					<?php endif; ?>
+            <input type="hidden" name="token" value="<?php echo $_SESSION['token'] ?>"/>
+            <?php if (isset($page['data']['user']['identifiant_utilisateur'])) :?>
+                <input type="hidden" name="identifiant_utilisateur" value="<?php echo $page['data']['user']['identifiant_utilisateur']; ?>"/>
+            <?php endif; ?>
 	  </form>
 </div>
 <?php if(!array_key_exists('has_drawer_menu', $page) || ! $page['has_drawer_menu']) : ?>

@@ -17,11 +17,15 @@ class DbQuery
 		return $statement->fetchAll();
 	}
 
-	public function insertInto($table, $data) {
+	public function insertInto($table, $data, $exclude = []) {
+
+		if ( !empty($exclude)) {
+			$data = array_diff_key( $data, $exclude );
+		}
 
 		$keys = [];
 	    foreach(array_keys($data) as $key){
-	    	$keys[] = addslashes(htmlspecialchars($key));
+		    $keys[] = addslashes(htmlspecialchars($key));
 	    }
 		$keys = implode(', ', $keys);
 
@@ -44,10 +48,11 @@ class DbQuery
 		return $results;
 	}
 
-    public function update($table, $data, $id_label = 'id') {
+    public function update($table, $data, $id_label = 'id', $exclude = []) {
 		$sql_set = '';
-		foreach ($data as $key => $value) {
-			if ($key !== $id_label) {
+
+	    foreach ($data as $key => $value) {
+			if ($key !== $id_label && ! array_key_exists($key, $exclude)) {
 				$sql_set .= $key . ' = \'' . htmlspecialchars($value) . '\', ';
 			}
 		}
