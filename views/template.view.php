@@ -27,7 +27,7 @@
 	    <meta name="msapplication-TileColor" content="#3372DF">
 		-->
 
-	    <link rel="shortcut icon" href="<?php echo SITE_URL; ?>/images/favicon.png">
+	    <!--link rel="shortcut icon" href="<?php echo SITE_URL; ?>images/favicon.png"-->
 
 	    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
 	    <!--
@@ -38,8 +38,8 @@
 	    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.cyan-light_blue.min.css">
 	    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css"/>
-			<link href='<?php echo SITE_URL; ?>/css/bulma.css' type='text/css' rel='stylesheet' />
-	    <link rel="stylesheet" href="<?php echo SITE_URL; ?>/css/styles.css">
+			<link href='css/bulma.css' type='text/css' rel='stylesheet' />
+	    <link rel="stylesheet" href="css/styles.css">
 	    <style>
 	    #view-source {
 	      position: fixed;
