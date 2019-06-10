@@ -25,13 +25,13 @@ class DbQuery
 
 		$keys = [];
 	    foreach(array_keys($data) as $key){
-		    $keys[] = addslashes(htmlspecialchars($key));
+		    $keys[] = addslashes(htmlspecialchars($key, ENT_QUOTES));
 	    }
 		$keys = implode(', ', $keys);
 
 	    $values = [];
 		foreach (array_values($data) as $value) {
-			$values[] = addslashes(htmlspecialchars($value));
+			$values[] = addslashes(htmlspecialchars($value, ENT_QUOTES));
 		}
 	    $values = implode('\', \'', $values);
 
@@ -53,7 +53,7 @@ class DbQuery
 
 	    foreach ($data as $key => $value) {
 			if ($key !== $id_label && ! array_key_exists($key, $exclude)) {
-				$sql_set .= $key . ' = \'' . htmlspecialchars($value) . '\', ';
+				$sql_set .= $key . ' = \'' . htmlspecialchars($value, ENT_QUOTES) . '\', ';
 			}
 		}
 		$sql_set = trim($sql_set, ', ');

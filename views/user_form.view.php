@@ -186,7 +186,7 @@
 	            <label class="label" for="philosophie">Philosophie</label>
 	          </div>
 	          <div class="control">
-	            <textarea class="textarea" name="philosophie" id="philosophie" cols="40" rows="4" placeholder="Meuh" ><?php echo  getField('philosophie', $page["data"]["user"]); ?></textarea>
+	            <textarea class="textarea" name="philosophie" id="philosophie" cols="40" rows="4" placeholder="Cogito ergo sum" ><?php echo  getField('philosophie', $page["data"]["user"]); ?></textarea>
 	          </div>
 	        </div>
 	<!-- Par rapport à la formation -->
