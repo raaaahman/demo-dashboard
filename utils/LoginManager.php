@@ -20,7 +20,7 @@ class LoginManager {
     //Vérifie le mot de pass de l'utilisateur, et stocke un token s'il est valide
     public static function verifyPassword($user, $password) {
         global $db;
-        $user = $db->getEntry('utilisateur', 'email', $user);
+        $user = $db->getEntry('UsersTable', 'email', $user);
         if ($user['mot_de_passe'] === $password) {
 	        return true;
         } else {

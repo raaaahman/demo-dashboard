@@ -67,9 +67,9 @@ class UsersController extends AbstractController {
 			],
 			'data' => [
 				'user' => [],
-				'ville' => $db->getList('ville'),
-				'language' => $db->getList('langage'),
-				'niveau' => $db->getList('niveau')
+				'ville' => $db->getList('CitiesTable'),
+				'language' => $db->getList('LanguagesTable'),
+				'niveau' => $db->getList('SkillTable')
 			]
 		]);
 	}
@@ -80,7 +80,7 @@ class UsersController extends AbstractController {
 		global $router;
 
 		if (LoginManager::verifyToken($_POST)) {
-			$db->insertInto( 'utilisateur', $_POST, ['token' => false] );
+			$db->insertInto( 'UsersTable', $_POST, ['token' => false] );
 		}
 		$router->redirect('/', 'GET');
 	}
@@ -96,10 +96,10 @@ class UsersController extends AbstractController {
 		    'view' => 'user_form',
 		    'action' => 'update-user',
 		    'data' => [
-		    	'user' => $db->getEntry('utilisateur', 'identifiant_utilisateur', $id),
-			    'ville' => $db->getList('ville'),
-			    'language' => $db->getList('langage'),
-			    'niveau' => $db->getList('niveau')
+		    	'user' => $db->getEntry('UsersTable', 'identifiant_utilisateur', $id),
+			    'ville' => $db->getList('CitiesTable'),
+			    'language' => $db->getList('LanguagesTable'),
+			    'niveau' => $db->getList('SkillTable')
 		    ]
 
 	    ]);
@@ -111,7 +111,7 @@ class UsersController extends AbstractController {
     	global $router;
 
     	if (LoginManager::verifyToken($_POST)) {
-		    $db->update('utilisateur', $_POST, 'identifiant_utilisateur', ['token' => false]);
+		    $db->update('UsersTable', $_POST);
 	    }
 	    $router->redirect('/users-list', 'GET');
 	}
@@ -121,6 +121,6 @@ class UsersController extends AbstractController {
     	global $db;
     	global $router;
 
-    	$db->delete('utilisateur', $_POST['userId'], 'identifiant_utilisateur');
+    	$db->delete('UsersTable', $_POST['userId']);
 	}
 }

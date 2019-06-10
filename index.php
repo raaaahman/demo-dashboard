@@ -1,10 +1,10 @@
 <?php
 ini_set('session.use_only_cookies', true);
+require 'bootstrap.php';
+header('Content-Type: text/html; charset=' . SITE_CHARSET);
 //Gestion de la session
 session_name("SESSION");
 session_start();
-
-require 'bootstrap.php';
 
 if (!array_key_exists('last_connection', $_SESSION)
 || $_SESSION['last_connection'] < (time() - 60)) {

@@ -2,6 +2,7 @@
 
 define('SITE_URL', 'example.com');
 define('SITE_SALT', '1234');
+define('SITE_CHARSET', 'UTF-8');
 
 return [
     'dsn' => 'mysql:host=localhost',
