@@ -38,7 +38,7 @@
 	    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.cyan-light_blue.min.css">
 	    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css"/>
-			<link href='css/bulma.css' type='text/css' rel='stylesheet' />
+        <link href='css/bulma.css' type='text/css' rel='stylesheet' />
 	    <link rel="stylesheet" href="css/styles.css">
 	    <style>
 	    #view-source {
@@ -108,7 +108,6 @@
 						<!--
 				    <a class="mdl-navigation__link" href="?action=create"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">note_add</i>Ajouter un utilisateur</a>
 					-->
-				    <a class="mdl-navigation__link" href="users-stats"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">assessment</i>Statistisques</a>
 				    <div class="mdl-layout-spacer"></div>
 				    <a class="mdl-navigation__link" href="logout"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">highlight_off</i>Log out</a>
 				  </nav>
@@ -132,7 +131,7 @@ ___  ___  ___  _____ _   _
 
 		<script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 		<!--jQuery-->
-		<script   src="js/jquery-3.1.1.min.js"></script>
+		<script   src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
 		<script   src="http://code.jquery.com/ui/1.12.0/jquery-ui.min.js"   integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="   crossorigin="anonymous"></script>
 
 		<?php if (array_key_exists( 'scripts',  $page)) {

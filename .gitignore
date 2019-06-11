@@ -13,6 +13,4 @@ map.md
 nbproject*
 docker*
 *.old
-**/config.php
 config.php
-.htaccess
