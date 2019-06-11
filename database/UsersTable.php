@@ -46,7 +46,8 @@ class UsersTable {
 			'flags'  => FILTER_FLAG_NO_ENCODE_QUOTES
 		],
 		'mot_de_passe' => [
-			'filter' => FILTER_DEFAULT // Passwords are hashed anyway
+			'filter' => FILTER_CALLBACK,
+			'options' => 'hashUserPassword'
 		],
 		'email' => [
 			'filter' => FILTER_VALIDATE_EMAIL

@@ -21,7 +21,7 @@ class LoginManager {
     public static function verifyPassword($user, $password) {
         global $db;
         $user = $db->getEntry('UsersTable', 'email', $user);
-        if ($user['mot_de_passe'] === $password) {
+        if (password_verify($password, $user['mot_de_passe'])) {
 	        return true;
         } else {
         	return false;
