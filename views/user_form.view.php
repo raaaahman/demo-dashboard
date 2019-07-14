@@ -224,6 +224,14 @@
 	            <input class="checkbox" type="checkbox" name="pref_accept_conditions" id="pref_accept_conditions" value="1" <?php if( getField('pref_accept_conditions', $page["data"]["user"]) == true) { echo "checked"; } ?>>
 	            J'ai lu et j'accepte les conditions d'admission.
 	          </label>
+        <div class="control">
+            <img src="form-captcha" />
+            <label class="label" for="captcha">
+                Veuillez entrer le code ci-dessus :
+            </label>
+            <input class="input" type="text" name="captcha" id="captcha" />
+        </div>
+
 
 	        <p class="control">
 	          <input class="button is-primary" type="submit" value="Envoyer">

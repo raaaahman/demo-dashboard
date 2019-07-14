@@ -19,7 +19,7 @@ class Router {
     //Charge le contrôleur associé à la route
     //Lance la méthode demandée
     public function direct($route, $force_method = false) {
-    	$request_method = $force_method ? $force_method : $_SERVER['REQUEST_METHOD'];
+     	$request_method = $force_method ? $force_method : $_SERVER['REQUEST_METHOD'];
     	$page_found = false;
 
     	//Sur un serveur local, l'URI peut inclure la hiérarchie des dossiers

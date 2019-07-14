@@ -17,3 +17,5 @@ $router->get( '/edit-user', 'UsersController@editUser');
 $router->post('/update-user', 'UsersController@updateUser');
 
 $router->post( '/delete-user', 'UsersController@deleteUser');
+
+$router->get('/form-captcha', 'UsersController@generateCaptcha');

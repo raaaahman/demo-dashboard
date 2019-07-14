@@ -1,4 +1,4 @@
 RewriteEngine on
 RewriteCond %{REQUEST_URI} !^.*(\.js|\.css)$
-RewriteBase /www/demo-dashboard/
+RewriteBase /demo-dashboard/
 RewriteRule ^.*$ index.php [END]

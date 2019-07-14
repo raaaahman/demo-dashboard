@@ -1,6 +1,6 @@
 <?php
 /**
- * Controller in charge to everything user's related
+ * Ce contrôleur gère tous ce qui concerne les utilisateurs
  */
 
 class UsersController extends AbstractController {
@@ -57,6 +57,13 @@ class UsersController extends AbstractController {
 	public function newUser() {
 		global $db;
 
+		//On stocke un texte de captcha dans la session de l'utilisation qui essaye de se connecter et on l'envoie au formulaire
+		if ( session_status() === PHP_SESSION_ACTIVE ) {
+			$chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+			$_SESSION['captcha_text'] = substr(str_shuffle($chars), 0, 8);
+		}
+
+
 		$this->render([
 			'title' => 'Inscription',
 			'has_drawer_menu' => false,
@@ -79,7 +86,7 @@ class UsersController extends AbstractController {
 		global $db;
 		global $router;
 
-		if (LoginManager::verifyToken($_POST)) {
+		if (LoginManager::verifyToken($_POST) && $_POST['captcha'] === $_SESSION['captcha_text']) {
 			$db->insertInto( 'UsersTable', $_POST, ['token' => false] );
 		}
 		$router->redirect('/', 'GET');
@@ -122,5 +129,36 @@ class UsersController extends AbstractController {
     	global $router;
 
     	$db->delete('UsersTable', $_POST['userId']);
+	}
+
+	//Genère une image basée sur le code du captcha, stocké dans la session utilisateur
+	public function generateCaptcha() {
+    	if ( !array_key_exists('captcha_text', $_SESSION)) {
+    		return false;
+	    }
+
+		$imageWidth = 180;
+		$imageHeigth = 60;
+
+    	try {
+		    $captcha = @imagecreatetruecolor($imageWidth, $imageHeigth);
+	    } catch (Error $err) {
+    		die( $err->getMessage() );
+	    }
+
+	    //Background
+		$bgColor = imagecolorallocate($captcha, 255, 255, 255);
+    	ImageFilledRectangle($captcha, 0, 0, $imageWidth, $imageHeigth, $bgColor);
+
+    	//Text
+		$textColor = imagecolorallocate($captcha, 0, 0, 60 );
+		imagettftext($captcha, 18, 0,25, 40, $textColor, '/fonts/times_new_yorker.ttf',$_SESSION['captcha_text']);
+
+		//Affichage de l'image
+		header('Content-type: image/jpeg');
+		imagejpeg($captcha);
+
+		//Libération de l'espace mémoire
+		imagedestroy($captcha);
 	}
 }
