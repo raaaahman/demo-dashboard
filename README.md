@@ -18,6 +18,7 @@ Cette interface back office est un projet d'étude conçu dans le cadre d'une fo
 - Javascript ES5
 - JQuery 3
 - Google Material Design Lite
+- Police de caractères : [Times New Yorker, par D.O.C.S.](https://www.dafont.com/fr/times-new-yorker.font)
 
 ## Installation
 
@@ -30,6 +31,7 @@ Cette interface back office est un projet d'étude conçu dans le cadre d'une fo
 
 - Modification vers une architecture MVC, suivant les tutoriels sur [Laracasts](https://laracasts.com/series/php-for-beginners)
 - Sécurisation selon les recettes du [*PHP Cookbook*, éditions *O'Reilly*](http://shop.oreilly.com/product/9781565926813.do)
+- [4 Simple steps to create Captcha Script in PHP](https://codingcyber.org/simple-captcha-script-php-5765/)
 
 
 
